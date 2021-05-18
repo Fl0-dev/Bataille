@@ -13,6 +13,8 @@ public enum Valeur {
     VALET,
     DAME,
     ROI,
-    AS
+    AS;
 
+    Valeur() {
+    }
 }
