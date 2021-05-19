@@ -25,21 +25,25 @@ public class Jeu {
     public Joueur bataille(){
         //le j1 tire une carte
         Random rand = new Random();
-        int valeurAleatoire = rand.nextInt(12 + 1);
+        int valeurAleatoire = rand.nextInt(12+1);
         Valeur valeurj1 = Valeur.values()[valeurAleatoire];
         int couleurAleatoire = rand.nextInt(3+1);
         Couleur couleurj1 = Couleur.values()[couleurAleatoire];
+        //Création de la carte du j1
+        Carte carteJ1 = new Carte(couleurj1,valeurj1);
         System.out.printf("Le joueur1 %s %s a tiré la carte %s de %s%n",j1.getPrenom(),j1.getNom(),valeurj1,couleurj1);
 
         //lej2 tire une carte qui ne soit pas la carte du J1
         int valeurAleatoire2;
-            valeurAleatoire2 = rand.nextInt(12 + 1);
+            valeurAleatoire2 = rand.nextInt(12+1);
         Valeur valeurj2 = Valeur.values()[valeurAleatoire2];
         int couleurAleatoire2;
         do {
             couleurAleatoire2 = rand.nextInt(3+1);
         }while(couleurAleatoire2==couleurAleatoire);
         Couleur couleurj2 = Couleur.values()[couleurAleatoire2];
+        //Création de la carte du j2
+        Carte carteJ2 = new Carte(couleurj2,valeurj2);
         System.out.printf("Le joueur2 %s %s a tiré la carte %s de %s%n",j2.getPrenom(),j2.getNom(),valeurj2,couleurj2);
         //compare les 2 valeurs de chaque carte et retourne le gagnant
         if (valeurAleatoire==valeurAleatoire2){
