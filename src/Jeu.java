@@ -10,13 +10,8 @@ import java.util.Random;
 public class Jeu {
     private Joueur j1;
     private Joueur j2;
+    private Joueur egalite;
 
-
-    /**
-     * Constructeur
-     * @param j1 joueur 1
-     * @param j2 joueur 2
-     */
     public Jeu(Joueur j1, Joueur j2) {
         this.j1 = j1;
         this.j2 = j2;
@@ -38,10 +33,7 @@ public class Jeu {
 
         //lej2 tire une carte qui ne soit pas la carte du J1
         int valeurAleatoire2;
-        do {
             valeurAleatoire2 = rand.nextInt(12 + 1);
-
-        }while(valeurAleatoire2 == valeurAleatoire);
         Valeur valeurj2 = Valeur.values()[valeurAleatoire2];
         int couleurAleatoire2;
         do {
@@ -49,9 +41,11 @@ public class Jeu {
         }while(couleurAleatoire2==couleurAleatoire);
         Couleur couleurj2 = Couleur.values()[couleurAleatoire2];
         System.out.printf("Le joueur2 %s %s a tiré la carte %s de %s%n",j2.getPrenom(),j2.getNom(),valeurj2,couleurj2);
-
         //compare les 2 valeurs de chaque carte et retourne le gagnant
-        if (valeurAleatoire>valeurAleatoire2){
+        if (valeurAleatoire==valeurAleatoire2){
+            return egalite;
+        }
+        else if (valeurAleatoire>valeurAleatoire2){
             return j1;
         }else{
             return j2;

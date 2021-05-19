@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Scanner;
  */
 public class Main{
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         //Création d'un scanner
         Scanner sc =new Scanner(System.in);
 
@@ -28,20 +29,43 @@ public class Main{
         Joueur j2 = new Joueur(nomJ2, prenomJ2);
 
         //instance du jeu après avoir demander le nombre de manche à jouer
-        System.out.println("Combien de manche voulez-vous jouer?");
+        int nbMmanche;
+        //boucle pour que la saisie soit bien un int>0
+        while(true) {
+            System.out.println("Combien de manche voulez-vous jouer? (nombre supérieur à 0)");
+            try {
+                nbMmanche = sc.nextInt();
+                //levée d'exception si nbManche <=0
+            if (nbMmanche<=0){
+                throw new IntException("Le nombre de manche doit être supérieur à 0");
+            }
+                break;
+            //traitement de l'exception nbManche !=int
+            }catch(InputMismatchException e) {
+                System.err.println("Saisie incorrecte");
+                //traitement de l'exception nbManche <=0
+            }catch (IntException e){
+                System.err.println("Le nombre de manche doit être supérieur à 0");
+            }finally {
+                sc.nextLine();
+            }
+        }
         int compteurJ1=0;
         int compteurJ2=0;
-        int nbMmanche = sc.nextInt();
+
+
         for (int i = 0; i < nbMmanche; i++) {
-            Jeu manche = new Jeu(j1, j2);
+            Jeu manche = new Jeu(j1,j2);
             if (j1 == manche.bataille()){
                     compteurJ1++;
                     //affichage j1 gagnant de la manche
                 System.out.printf("%s %s a gagné%n",j1.getPrenom(),j1.getNom());
-            } else{
+            } else if (j2 == manche.bataille()){
                 compteurJ2++;
                 //affichage j2 gagnant de la manche
                 System.out.printf("%s %s a gagné%n",j2.getPrenom(),j2.getNom());
+            } else{
+                System.out.println("Egalité! Un point pour chaque.");
             }
         }
         //affichage du gagnant
