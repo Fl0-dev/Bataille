@@ -1,5 +1,6 @@
-import java.rmi.server.RemoteObjectInvocationHandler;
-
+/**
+ * Enumération des valeur d'un jeu de carte
+ */
 public enum Valeur {
     DEUX,
     TROIS,

@@ -1,3 +1,8 @@
+/**
+ * Class Carte avec
+ * attribut Couleur (énumération)
+ * attribut Valeur (énumération)
+ */
 public class Carte {
     private Couleur couleur;
     private Valeur valeur;

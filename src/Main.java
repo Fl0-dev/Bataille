@@ -1,25 +1,33 @@
 import java.util.Scanner;
 
+/**
+ * Class principale pour un jeu de bataille
+ * entre 2 joueurs qui tire chacun 1 carte au hasard dans un paquet de 52 cartes
+ * @date 19 mai 2021
+ * @author florian Girard
+ * @version 1.0
+ */
 public class Main{
 
     public static void main(String[] args) {
+        //Création d'un scanner
         Scanner sc =new Scanner(System.in);
 
-        //instance du J1
+        //instance du J1 après avoir scanner les saisies du joueur
         System.out.println("Quel sera le prénom du joueur 1 ?");
         String prenomJ1 = sc.nextLine();
         System.out.println("Quel sera le nom du joueur 1 ?");
         String nomJ1 = sc.nextLine();
         Joueur j1 = new Joueur(nomJ1, prenomJ1);
 
-        //instance du J2
+        //instance du J2 après avoir scanner les saisies du joueur
         System.out.println("Quel sera le prénom du joueur 2 ?");
         String prenomJ2 = sc.nextLine();
         System.out.println("Quel sera le nom du joueur 2 ?");
         String nomJ2 = sc.nextLine();
         Joueur j2 = new Joueur(nomJ2, prenomJ2);
-        //instance du jeu
 
+        //instance du jeu après avoir demander le nombre de manche à jouer
         System.out.println("Combien de manche voulez-vous jouer?");
         int compteurJ1=0;
         int compteurJ2=0;
